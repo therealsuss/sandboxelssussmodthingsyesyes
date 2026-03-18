@@ -1164,14 +1164,14 @@ elements.filter.tick = function(pixel) {
 		//move pixel
 		let targets;
 		let element = pixel.con.element;
-		if (elements[element].isGas) { //random direction
+		//if (elements[element].isGas) { //random direction
 			shuffleArray(squareCoordsShuffle);
 			targets = squareCoordsShuffle;
-		}
-		else { //downward, and then randomly diagonally
-			if (Math.random() < 0.5) return;
-			targets = [[0,1], ...(Math.random() < 0.5 ? [[1,1],[-1,1]] : [[-1,1],[1,1]])];
-		}
+		//}
+		//else { //downward, and then randomly diagonally
+		//	if (Math.random() < 0.5) return;
+		//	targets = [[0,1], ...(Math.random() < 0.5 ? [[1,1],[-1,1]] : [[-1,1],[1,1]])];
+		//}
 
 		for (var i = 0; i < targets.length; i++) {
 			var coord = targets[i];
