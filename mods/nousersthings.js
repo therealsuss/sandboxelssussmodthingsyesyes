@@ -2583,7 +2583,7 @@ elements.gallium_nitride = {
                 var coord = squareCoords[i];
                 var x = pixel.x+coord[0];
                 var y = pixel.y+coord[1];
-                if (isEmpty(x,y, true)){
+                if (isEmpty(x,y)){
                     if (Math.random() < 0.3){
                         createPixel("light", x, y)
                         pixelMap[x][y].color = pixelColorPick(pixelMap[x][y], "#493ee9")
@@ -2620,7 +2620,7 @@ elements.gallium_phosphide = {
                 var coord = squareCoords[i];
                 var x = pixel.x+coord[0];
                 var y = pixel.y+coord[1];
-                if (isEmpty(x,y, true)){
+                if (isEmpty(x,y)){
                     if (Math.random() < 0.3){
                         createPixel("light", x, y)
                         pixelMap[x][y].color = pixelColorPick(pixelMap[x][y], "#00ff15")
