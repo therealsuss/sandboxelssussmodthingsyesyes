@@ -11,7 +11,7 @@ elements.heatburst = {
 }
 
 elements.nuclei = {
-     color: "#cccccc",
+     color: "#34eb6e",
      behavior: [
         "XX|M1|XX",
         "M1|XX|M1",
