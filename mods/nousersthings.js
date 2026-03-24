@@ -3526,3 +3526,32 @@ elements.heat_conducting_wall = {
 }
 elements.acid.ignore.push("heat_conducting_wall");
 elements.acid_gas.ignore.push("heat_conducting_wall");
+elements.aerogel = {
+    color: "#84cbe5",
+    alpha: 0.7,
+    hardness: 0.04,
+    behavior: behaviors.WALL,
+    category: "solids",
+    density: 20,
+    tempHigh: 1710,
+    stateHigh: ["molten_glass", "carbon_dioxide", "carbon_dioxide", "carbon_dioxide"],
+    insulate: true,
+    tick: function(pixel){
+        for (let i=0;i<adjacentCoord.length;i++){
+            let coord = adjacentCoords[i];
+			let x = pixel.x+coord[0];
+			let y = pixel.y+coord[1];
+            if (!isEmpty(x, y, true)){
+                let otherPixel = pixelMap[x][y]
+                if ((otherPixel.element = "aerogel" || !elements[otherPixel.element].insulate) && Math.random() < 0.1){
+                    let thisTemp = weightedAverage(pixel.temp, otherPixel.temp, 0.005)
+                    let otherTemp = weightedAverage(otherPixel.temp, pixel.temp, 0.005)
+                    pixel.temp = thisTemp;
+                    otherPixel.temp = otherTemp;
+                    pixelTempCheck(pixel);
+                    pixelTempCheck(otherPixel);
+                }
+            }
+        }
+    }
+}
