@@ -656,7 +656,9 @@
     runAfterLoad(() => {
       const patcher = new Patcher(settings_manager);
       const handler = new Handler(settings_manager, patcher);
-      dependOn("worldEdit.js", () => patch_worldedit(handler));
+      if (loadedMods.some((x) => x.endsWith("worldEdit.js"))) {
+        patch_worldedit(handler);
+      }
       on_change.cb = () => patcher.update_from_settings();
     });
   }, true);
